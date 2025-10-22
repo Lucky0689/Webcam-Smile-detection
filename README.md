@@ -1,22 +1,31 @@
 Webcam-Smile-detection
 
-This code performs face and eye detection on a given image using OpenCV's Haar Cascade classifiers.
+The steps of the webcam smile detection code are:
 
-Description of the Code
-Step 1: Load Haar Cascade classifiers
-The code loads pre-trained Haar Cascades for detecting faces (haarcascade_frontalface_default.xml) and eyes (haarcascade_eye.xml) from OpenCV’s data directory.
+Import OpenCV library.
 
-Step 2: Read and preprocess the image
-It reads an image ("Addision.jpg") and converts it to grayscale since Haar Cascade detection works on grayscale images.
+Load Haar cascade classifiers for face and smile detection.
 
-Step 3: Detect faces
-Using the face cascade, it detects faces in the grayscale image with specified parameters: scaleFactor (scale at which image size is reduced), minNeighbors (how many neighbors each candidate rectangle must have to retain), and minSize (minimum size of detected face).
+Start the webcam video capture using cv2.VideoCapture(0).
 
-Step 4: Draw rectangles around detected faces
-For each detected face, the code draws a blue rectangle on the original color image indicating face boundaries.
+Enter an infinite loop to read frames from the webcam.
 
-Step 5: Detect eyes within each detected face
-In the face region of interest, it applies the eye cascade to detect eyes and draws green rectangles around detected eyes inside the face.
+Convert each frame to grayscale (Haar cascades work on grayscale).
 
-Step 6: Display the image with detection rectangles
-Finally, it shows the resulting image in a window titled "Face and Eyes Detection". The window waits indefinitely for a key press before closing.
+Detect faces in the grayscale frame using the face cascade.
+
+For each detected face, draw a blue rectangle on the color frame.
+
+Define the face region of interest (ROI) in grayscale and color images.
+
+Detect smiles within the face ROI using the smile cascade.
+
+For each detected smile, draw a green rectangle and label with "Smile".
+
+Display the video stream with the drawn rectangles.
+
+Exit the loop and close windows when the 'q' key is pressed.
+
+Release webcam resource and destroy all OpenCV windows.
+
+These steps achieve real-time face and smile detection from webcam video using pretrained Haar cascades in OpenCV.​
